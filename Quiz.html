@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+            font-size: 3rem;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .options label {
+            display: block;
+            margin: 10px 0;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        #result {
+            display: none;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Quiz Game</h1>
+    <form id="quizForm">
+        <div class="question">
+            <h3>1. What is the capital of France?</h3>
+            <div class="options">
+                <label><input type="radio" name="q1" value="a">a) Paris</label>
+                <label><input type="radio" name="q1" value="b">b) London</label>
+                <label><input type="radio" name="q1" value="c">c) Berlin</label>
+                <label><input type="radio" name="q1" value="d">d) norway</label>
+            </div>
+        </div>
+        <div class="question">
+            <h3>2. What is the largest planet in our solar system?</h3>
+            <div class="options">
+                <label><input type="radio" name="q2" value="a">a) Earth</label>
+                <label><input type="radio" name="q2" value="b">b) Mars</label>
+                <label><input type="radio" name="q2" value="c">c) Jupiter</label>
+                <label><input type="radio" name="q2" value="d">d) saturn</label>
+            </div>
+        </div>
+        <div class="question">
+            <h3>3. HTML stands for ?</h3>
+            <div class="options">
+                <label><input type="radio" name="q3" value="a">a) Hyper text markup languaue</label>
+                <label><input type="radio" name="q3" value="b">b) Hype text markup languaue</label>
+                <label><input type="radio" name="q3" value="c">c)  Hyper text mashup languaue</label>
+                <label><input type="radio" name="q3" value="d">d)  Hyper texts mashup languaue</label>
+            </div>
+        </div>
+        <div class="question">
+            <h3>4. What is the chemical symbol for water?</h3>
+            <div class="options">
+                <label><input type="radio" name="q4" value="a">a) H2O</label>
+                <label><input type="radio" name="q4" value="b">b) CO2</label>
+                <label><input type="radio" name="q4" value="c">c) O2</label>
+                <label><input type="radio" name="q4" value="d">d) h2so4</label>
+            </div>
+        </div>
+        <div class="question">
+            <h3>5. What is the first tag of an HTML Document?</h3>
+            <div class="options">
+                <label><input type="radio" name="q5" value="a">a) body</label>
+                <label><input type="radio" name="q5" value="b">b) head</label>
+                <label><input type="radio" name="q5" value="c">c) html</label>
+                <label><input type="radio" name="q5" value="d">d) div</label>
+            </div>
+        </div>
+        <button type="button" onclick="calculateScore()">Submit</button>
+    </form>
+    <div id="result">Your score is: <span id="score">0</span>/5</div>
+</div>
+
+<script>
+    function calculateScore() {
+        const answers = ['a', 'c', 'a','a','c'];
+        const form = document.getElementById('quizForm');
+        const scoreDisplay = document.getElementById('score');
+        let score = 0;
+
+        for (let i = 0; i < answers.length; i++) {
+            const questionName = 'q' + (i + 1);
+            const selectedAnswer = form.elements[questionName].value;
+            if (selectedAnswer === answers[i]) {
+                score++;
+            }
+        }
+
+        scoreDisplay.textContent = score;
+        document.getElementById('result').style.display = 'block';
+    }
+</script>
+</body>
+</html>
